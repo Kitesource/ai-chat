@@ -1,10 +1,10 @@
 <template>
-  <div class="h-[10%] bg-gray-200 border-b border-gray-300 flex items-center px-3 justify-between" v-if="conversation">
+  <div class="h-14 bg-gray-200 border-b border-gray-300 flex items-center px-3 justify-between" v-if="conversation">
     <h3 class="font-semibold text-gray-900">{{ conversation.title }}</h3>
     <span class="text-sm text-gray-500">{{ formatDate(conversation.updatedAt) }}</span>
   </div>
-  <div class="w-[80%] mx-auto h-[75%] overflow-y-auto pt-2">
-    <MessageList :messages="filteredMessages" ref="messageListRef" />
+  <div class="w-[100%] mx-auto h-[75%] overflow-y-auto p-4">
+    <MessageList :messages="filteredMessages" :ai-avatar="aiAvatar" :user-avatar="userAvatar" ref="messageListRef" />
   </div>
   <div class="w-[80%] mx-auto h-[15%] flex items-center">
     <MessageInput @create="sendNewMessage" v-model="inputValue" :disabled="messageStore.isMessageLoading" />
@@ -43,6 +43,12 @@ const sendedMessages = computed(() =>
 let conversationId = ref(parseInt(route.params.id as string))
 const initMessageId = parseInt(route.query.init as string)
 const conversation = computed(() => conversationStore.getConversationById(conversationId.value))
+const aiAvatar = computed(() => {
+  const provider = conversation.value ? providerStore.getProviderById(conversation.value.providerId) : null
+  return provider?.avatar || 'https://api.iconify.design/ri:robot-line.svg'
+})
+const userAvatar = 'https://api.iconify.design/radix-icons:person.svg?color=%23555'
+
 const lastQuestion = computed(() => messageStore.getLastQuestion(conversationId.value))
 const sendNewMessage = async (question: string, imagePath?: string) => {
   if (question) {
