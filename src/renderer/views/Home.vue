@@ -1,10 +1,10 @@
 <template>
   <div class="w-[80%] mx-auto h-full">
     <div class="flex items-center h-[85%]">
-      <ProviderSelect :items="providers" v-model="currentProvider"/>
+      <ProviderSelect :items="providers" v-model="currentProvider" />
     </div>
     <div class="flex items-center h-[15%]">
-      <MessageInput @create="createConversation" :disabled="currentProvider === ''"/>
+      <MessageInput @create="createConversation" :disabled="currentProvider === ''" />
     </div>
   </div>
 </template>
@@ -17,21 +17,23 @@ import { useConversationStore } from '@renderer/stores/conversation'
 import { useProviderStore } from '@renderer/stores/provider'
 import ProviderSelect from '@renderer/components/ProviderSelect.vue'
 import MessageInput from '@renderer/components/MessageInput.vue'
+import { formatDate } from '@renderer/utils/format'
+
 const currentProvider = ref('')
 const router = useRouter()
 const conversationStore = useConversationStore()
 const providerStore = useProviderStore()
 const providers = computed(() => providerStore.items)
 const modelInfo = computed(() => {
-  const [ providerId, selectedModel ] = currentProvider.value.split('/')
+  const [providerId, selectedModel] = currentProvider.value.split('/')
   return {
     providerId: parseInt(providerId),
-    selectedModel
+    selectedModel,
   }
 })
 const createConversation = async (question: string, imagePath?: string) => {
   const { providerId, selectedModel } = modelInfo.value
-  const currentDate = new Date().toISOString()
+  const currentDate = formatDate(new Date())
   let copiedImagePath: string | undefined
   if (imagePath) {
     try {
@@ -46,15 +48,15 @@ const createConversation = async (question: string, imagePath?: string) => {
     providerId,
     selectedModel,
     createdAt: currentDate,
-    updatedAt: currentDate
+    updatedAt: currentDate,
   })
-  const newMessageId  = await db.messages.add({
+  const newMessageId = await db.messages.add({
     content: question,
     conversationId,
     createdAt: currentDate,
     updatedAt: currentDate,
     type: 'question',
-    ...(copiedImagePath && { imagePath: copiedImagePath })
+    ...(copiedImagePath && { imagePath: copiedImagePath }),
   })
   conversationStore.selectedId = conversationId
   router.push(`/conversation/${conversationId}?init=${newMessageId}`)

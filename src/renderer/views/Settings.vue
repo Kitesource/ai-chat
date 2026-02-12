@@ -269,6 +269,7 @@ import {
   DialogClose,
 } from 'radix-vue'
 import { useToast } from '@renderer/composables/useToast'
+import { formatDate } from '@renderer/utils/format'
 
 const { t } = useI18n()
 const { toast } = useToast()
@@ -318,8 +319,8 @@ const saveProvider = async () => {
         .split(/[,，]/)
         .map(m => m.trim())
         .filter(Boolean),
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      createdAt: formatDate(new Date()),
+      updatedAt: formatDate(new Date()),
     })
 
     // 2. 保存配置到Config (使用Provider的Title作为Key的一部分，或者生成唯一ID，这里简化直接用Title，实际最好用ID或UUID)
