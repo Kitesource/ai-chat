@@ -1,9 +1,27 @@
 import { app } from 'electron'
 import path from 'path'
 import fs from 'fs/promises'
-import { AppConfig, DEFAULT_CONFIG } from '@/types'
+import { AppConfig, ProviderType } from '@/types'
 
 const configPath = path.join(app.getPath('userData'), 'config.json')
+export const DEFAULT_CONFIG: AppConfig = {
+  language: 'zh',
+  fontSize: 14,
+  providerConfigs: {
+    [ProviderType.Qianfan]: {
+      accessKey: process.env.VITE_QIANFAN_ACCESS_KEY || '',
+      secretKey: process.env.VITE_QIANFAN_SECRET_KEY || '',
+    },
+    [ProviderType.Dashscope]: {
+      apiKey: '',
+      baseUrl: '',
+    },
+    [ProviderType.DeepSeek]: {
+      apiKey: '',
+      baseUrl: '',
+    },
+  }
+}
 let config = { ...DEFAULT_CONFIG }
 
 export const configManager = {

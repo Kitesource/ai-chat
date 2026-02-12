@@ -17,7 +17,6 @@ export function setupIPC(mainWindow: BrowserWindow) {
 
   // Chat handler
   ipcMain.on('start-chat', async (event, data: CreateChatProps) => {
-    console.log('hey', data)
     const { providerName, messages, messageId, selectedModel } = data
     try {
       const provider = createProvider(providerName)

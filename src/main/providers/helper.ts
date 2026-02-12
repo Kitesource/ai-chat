@@ -1,5 +1,6 @@
 import fs from 'fs/promises'
 import { lookup } from 'mime-types'
+
 export async function convertMessages( messages:  { role: string; content: string, imagePath?: string}[]) {
   const convertedMessages = []
   for (const message of messages) {

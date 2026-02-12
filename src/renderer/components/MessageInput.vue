@@ -15,7 +15,7 @@
         ]"
         @click="triggerFileInput"
       />
-      <input class="outline-none border-0 flex-1 bg-white focus:ring-0" type="text" v-model="model" :disabled="disabled">
+      <input class="outline-none border-0 flex-1 bg-white focus:ring-0" type="text" v-model="model" :disabled="disabled" @keydown="onKeydown">
       <Button icon-name="radix-icons:paper-plane" @click="onCreate" :disabled="disabled">
         {{ t('common.send') }}
       </Button>
@@ -65,6 +65,13 @@ const onCreate = () => {
     selectedImage = null
     imagePreview.value = ''
   } 
+}
+
+const onKeydown = (event: KeyboardEvent) => {
+  if (event.key === 'Enter' && !event.shiftKey) {
+    event.preventDefault()
+    onCreate()
+  }
 }
 
 </script>

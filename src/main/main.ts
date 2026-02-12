@@ -32,11 +32,8 @@ const createWindow = async () => {
   setupIPC(mainWindow)
 
   protocol.handle('safe-file', async request => {
-    console.log(request.url)
     const filePath = decodeURIComponent(request.url.slice('safe-file://'.length))
-    console.log(filePath)
     const newFilePath = url.pathToFileURL(filePath).toString()
-    console.log(newFilePath)
     return net.fetch(newFilePath)
   })
 

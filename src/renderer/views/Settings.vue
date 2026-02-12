@@ -105,7 +105,7 @@
 import { reactive, onMounted, watch, ref, computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
-import { AppConfig } from '@/types'
+import { AppConfig, ProviderType } from '@/types'
 import { setI18nLanguage } from '@renderer/i18n'
 import { useProviderStore } from '@renderer/stores/provider'
 import { providerConfigs, ProviderConfigItem } from '@renderer/config/providerConfig'
@@ -165,7 +165,7 @@ watch(currentConfig, async (newConfig) => {
 }, { deep: true })
 
 // 获取provider对应的配置项
-const getProviderConfig = (providerName: string): ProviderConfigItem[] => {
+const getProviderConfig = (providerName: ProviderType): ProviderConfigItem[] => {
   const configs = providerConfigs[providerName] || []
   // 确保配置值被初始化
   if (!currentConfig.providerConfigs[providerName]) {
@@ -173,12 +173,12 @@ const getProviderConfig = (providerName: string): ProviderConfigItem[] => {
   }
   return configs.map(config => ({
     ...config,
-    value: currentConfig.providerConfigs[providerName][config.key] || config.value
+    value: currentConfig.providerConfigs[providerName]?.[config.key] || config.value
   }))
 }
 
 // 更新provider配置值
-const updateProviderConfig = (providerName: string, key: string, value: string) => {
+const updateProviderConfig = (providerName: ProviderType, key: string, value: string) => {
   if (!currentConfig.providerConfigs[providerName]) {
     currentConfig.providerConfigs[providerName] = {}
   }

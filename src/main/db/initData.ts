@@ -1,4 +1,5 @@
-import { MessageProps, ConversationProps, ProviderProps } from '@/types'
+import { MessageProps, ConversationProps, ProviderProps, ProviderType } from '@/types'
+
 export const messages: MessageProps[] = [
   {
     id: 1,
@@ -99,6 +100,7 @@ export const messages: MessageProps[] = [
     conversationId: 3,
   },
 ]
+
 export const conversations: ConversationProps[] = [
   {
     id: 1,
@@ -169,17 +171,17 @@ export const conversations: ConversationProps[] = [
 export const providers: ProviderProps[] = [
   {
     id: 1,
-    name: 'qianfan',
+    name: ProviderType.Qianfan,
     title: '百度千帆',
     desc: '文心一言 百度出品的大模型',
-    models: ['ERNIE-4.0-8K', 'ERNIE-3.5-8K', 'ERNIE-Speed-128K', 'ernie-lite-pro-128k'],
+    models: ['ERNIE-4.0-8K', 'ERNIE-3.5-8K', 'ERNIE-Speed-128K', 'ernie-lite-pro-128k', 'ernie-5.0-thinking-preview'],
     avatar: 'https://aip-static.cdn.bcebos.com/landing/product/ernie-bote321e5.png',
     createdAt: '2024-07-03',
     updatedAt: '2024-07-03',
   },
   {
     id: 2,
-    name: 'dashscope',
+    name: ProviderType.Dashscope,
     title: '阿里灵积',
     desc: '通义千问',
     // https://help.aliyun.com/zh/dashscope/developer-reference/api-details?spm=a2c4g.11186623.0.0.5bf41507xgULX5#b148acc634pfc
@@ -190,7 +192,7 @@ export const providers: ProviderProps[] = [
   },
   {
     id: 3,
-    name: 'deepseek',
+    name: ProviderType.DeepSeek,
     title: 'DeepSeek',
     desc: 'DeepSeek',
     // https://api-docs.deepseek.com/zh-cn/

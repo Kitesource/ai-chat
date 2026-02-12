@@ -1,8 +1,8 @@
 import Dexie, { type EntityTable } from 'dexie'
 import { ProviderProps, ConversationProps, MessageProps } from '@/types'
-import { providers } from './testData'
+import { providers } from './initData'
 
-export const db = new Dexie('vChatDatabase') as Dexie & {
+export const db = new Dexie('AIChatDB') as Dexie & {
   providers: EntityTable<ProviderProps, 'id'>
   conversations: EntityTable<ConversationProps, 'id'>
   messages: EntityTable<MessageProps, 'id'>

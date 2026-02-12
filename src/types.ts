@@ -6,9 +6,17 @@ export interface ConversationProps {
   updatedAt: string;
   providerId: number;
 }
+
+export enum ProviderType {
+  OpenAI = 'openai',
+  Qianfan = 'qianfan',
+  Dashscope = 'dashscope',
+  DeepSeek = 'deepseek'
+}
+
 export interface ProviderProps {
   id: number;
-  name: string;
+  name: ProviderType;
   title?: string;
   desc?: string;
   avatar?: string;
@@ -36,7 +44,7 @@ export interface ChatMessageProps {
 }
 export interface CreateChatProps {
   messages: ChatMessageProps[];
-  providerName: string;
+  providerName: ProviderType;
   selectedModel: string;
   messageId: number;
 }
@@ -68,11 +76,5 @@ export interface BaiduChunkProps {
 export interface AppConfig {
   language: 'zh' | 'en'
   fontSize: number
-  providerConfigs: Record<string, Record<string, string>>
-}
-
-export const DEFAULT_CONFIG: AppConfig = {
-  language: 'zh',
-  fontSize: 14,
-  providerConfigs: {}
+  providerConfigs: Partial<Record<ProviderType, Record<string, string>>>
 }
