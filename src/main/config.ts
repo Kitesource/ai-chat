@@ -13,12 +13,12 @@ export const DEFAULT_CONFIG: AppConfig = {
       secretKey: process.env.VITE_QIANFAN_SECRET_KEY || '',
     },
     [ProviderType.Dashscope]: {
-      apiKey: '',
-      baseUrl: '',
+      apiKey: process.env.VITE_DASHSCOPE_APIKEY || '',
+      baseUrl: process.env.VITE_DASHSCOPE_BASEURL || '',
     },
     [ProviderType.DeepSeek]: {
-      apiKey: '',
-      baseUrl: '',
+      apiKey: process.env.VITE_DEEPSEEK_APIKEY || '',
+      baseUrl: process.env.VITE_DEEPSEEK_BASEURL || '',
     },
   }
 }

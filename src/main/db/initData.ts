@@ -185,7 +185,7 @@ export const providers: ProviderProps[] = [
     title: '阿里灵积',
     desc: '通义千问',
     // https://help.aliyun.com/zh/dashscope/developer-reference/api-details?spm=a2c4g.11186623.0.0.5bf41507xgULX5#b148acc634pfc
-    models: ['qwen-turbo', 'qwen-plus', 'qwen-max', 'qwen-vl-plus'],
+    models: ['qwen-turbo', 'qwen-plus', 'qwen-max', 'qwen-vl-plus', 'qwen3-max', 'qwen3-vl-plus'],
     avatar: 'https://qph.cf2.poecdn.net/main-thumb-pb-4160791-200-qlqunomdvkyitpedtghnhsgjlutapgfl.jpeg',
     createdAt: '2024-07-03',
     updatedAt: '2024-07-03',
@@ -196,7 +196,7 @@ export const providers: ProviderProps[] = [
     title: 'DeepSeek',
     desc: 'DeepSeek',
     // https://api-docs.deepseek.com/zh-cn/
-    models: ['deepseek-chat'],
+    models: ['deepseek-v3.2'],
     avatar: 'https://qph.cf2.poecdn.net/main-thumb-pb-4981273-200-phhqenmywlkiybehuaqvsxpfekviajex.jpeg',
     createdAt: '2024-12-27',
     updatedAt: '2024-12-27',
