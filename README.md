@@ -9,6 +9,8 @@
 - **现代化 UI**：基于 Tailwind CSS 和 Radix Vue 构建的精美界面，支持深色模式。
 - **Markdown 支持**：聊天内容支持 Markdown 渲染及代码高亮。
 - **国际化**：内置 Vue I18n，支持多语言切换。
+- **自定义模型**：支持添加符合 OpenAI 接口标准的自定义模型服务商，并支持删除管理。
+- **交互反馈**：全局 Toast 通知组件，提供多种类型的反馈提示。
 - **跨平台**：支持 Windows, macOS, Linux (通过 Electron)。
 
 ## 🛠️ 技术栈
