@@ -5,23 +5,35 @@ export default {
     fontSize: '字体大小',
     selectLanguage: '选择语言...',
     general: '通用',
-    models: '模型'
+    models: '模型',
+    addProvider: '添加模型服务',
+    addCustomProvider: '添加自定义模型服务',
+    addProviderDesc: '添加兼容 OpenAI 接口的模型服务商。',
   },
   contextMenu: {
-    deleteConversation: '删除对话'
+    deleteConversation: '删除对话',
   },
   common: {
     send: '发送',
     chinese: '中文',
     english: 'English',
     newChat: '新建聊天',
-    settings: '应用设置'
+    settings: '应用设置',
+    cancel: '取消',
+    save: '保存',
+    name: '名称',
+    delete: '删除',
+    confirmDelete: '确定要删除这个模型服务商吗？',
+  },
+  toast: {
+    addSuccess: '添加成功',
+    deleteSuccess: '删除成功',
   },
   menu: {
     app: {
       newConversation: '新建对话',
       settings: '设置',
-      quit: '退出'
+      quit: '退出',
     },
     edit: {
       title: '编辑',
@@ -34,9 +46,9 @@ export default {
       speech: {
         title: '语音',
         startSpeaking: '开始朗读',
-        stopSpeaking: '停止朗读'
+        stopSpeaking: '停止朗读',
       },
-      emoji: '表情与符号'
+      emoji: '表情与符号',
     },
     view: {
       title: '视图',
@@ -46,10 +58,21 @@ export default {
       resetZoom: '重置缩放',
       zoomIn: '放大',
       zoomOut: '缩小',
-      togglefullscreen: '切换全屏'
-    }
+      togglefullscreen: '切换全屏',
+    },
   },
   provider: {
-    selectModel: '选择模型...'
-  }
-} 
+    selectModel: '选择模型...',
+    avatarUrl: '头像 URL (可选)',
+    baseUrl: 'Base URL',
+    apiKey: 'API Key',
+    models: '模型列表 (用逗号分隔)',
+    placeholder: {
+      name: '例如: My Local LLM',
+      avatar: 'https://...',
+      baseUrl: '例如: http://localhost:11434/v1',
+      apiKey: 'sk-...',
+      models: 'llama3, mistral, gpt-4',
+    },
+  },
+}

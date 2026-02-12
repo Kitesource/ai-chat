@@ -1,12 +1,12 @@
 import { app, Menu, BrowserWindow, MenuItemConstructorOptions } from 'electron'
 import { configManager } from './config'
 import en from '@renderer/locales/en'
-import zh from '@renderer/locales/zh-CN'
+import zhCN from '@renderer/locales/zh-CN'
 
-type MessageSchema = typeof zh
+type MessageSchema = typeof zhCN
 const messages: Record<string, MessageSchema> = {
   en,
-  zh,
+  'zh-CN': zhCN,
 }
 
 // 创建一个通用的翻译函数
@@ -14,7 +14,7 @@ const createTranslator = () => {
   const config = configManager.get()
   return (key: string) => {
     const keys = key.split('.')
-    let result: any = messages[config.language]
+    let result: any = messages[config.language] || messages.en
     for (const k of keys) {
       result = result[k]
     }

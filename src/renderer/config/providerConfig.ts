@@ -1,10 +1,10 @@
 export interface ProviderConfigItem {
-  key: string;
-  label: string;
-  value: string;
-  type: 'text' | 'password' | 'number';
-  required?: boolean;
-  placeholder?: string;
+  key: string
+  label: string
+  value: string
+  type: 'text' | 'password' | 'number'
+  required?: boolean
+  placeholder?: string
 }
 
 // 百度文心一言配置
@@ -15,7 +15,7 @@ export const qianfanConfig: ProviderConfigItem[] = [
     value: '',
     type: 'text',
     required: true,
-    placeholder: '请输入Access Key'
+    placeholder: '请输入Access Key',
   },
   {
     key: 'secretKey',
@@ -23,19 +23,19 @@ export const qianfanConfig: ProviderConfigItem[] = [
     value: '',
     type: 'password',
     required: true,
-    placeholder: '请输入Secret Key'
-  }
-];
+    placeholder: '请输入Secret Key',
+  },
+]
 
 // API Key + Base URL 通用配置模板
-export const apiKeyBaseUrlConfig: ProviderConfigItem[] = [
+export const customProviderConfig: ProviderConfigItem[] = [
   {
     key: 'apiKey',
     label: 'API Key',
     value: '',
     type: 'password',
     required: true,
-    placeholder: '请输入API Key'
+    placeholder: '请输入API Key',
   },
   {
     key: 'baseUrl',
@@ -43,14 +43,16 @@ export const apiKeyBaseUrlConfig: ProviderConfigItem[] = [
     value: '',
     type: 'text',
     required: false,
-    placeholder: '请输入API基础URL'
-  }
-];
+    placeholder: '请输入API基础URL',
+  },
+]
+
+export const apiKeyBaseUrlConfig = customProviderConfig
 
 // 所有Provider的配置映射
 export const providerConfigs: Record<string, ProviderConfigItem[]> = {
   qianfan: qianfanConfig,
   dashscope: apiKeyBaseUrlConfig,
   deepseek: apiKeyBaseUrlConfig,
-  openai: apiKeyBaseUrlConfig
-}; 
+  openai: apiKeyBaseUrlConfig,
+}

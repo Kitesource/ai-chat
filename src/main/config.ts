@@ -5,7 +5,7 @@ import { AppConfig, ProviderType } from '@/types'
 
 const configPath = path.join(app.getPath('userData'), 'config.json')
 export const DEFAULT_CONFIG: AppConfig = {
-  language: 'zh',
+  language: 'zh-CN',
   fontSize: 14,
   providerConfigs: {
     [ProviderType.Qianfan]: {
@@ -20,7 +20,7 @@ export const DEFAULT_CONFIG: AppConfig = {
       apiKey: process.env.VITE_DEEPSEEK_APIKEY || '',
       baseUrl: process.env.VITE_DEEPSEEK_BASEURL || '',
     },
-  }
+  },
 }
 let config = { ...DEFAULT_CONFIG }
 

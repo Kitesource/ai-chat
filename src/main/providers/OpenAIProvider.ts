@@ -23,7 +23,9 @@ export class OpenAIProvider extends BaseProvider {
     return {
       async *[Symbol.asyncIterator]() {
         for await (const chunk of stream) {
-          yield self.transformResponse(chunk)
+          if (chunk.choices.length) {
+            yield self.transformResponse(chunk)
+          }
         }
       },
     }

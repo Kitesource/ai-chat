@@ -5,23 +5,35 @@ export default {
     fontSize: 'Font Size',
     selectLanguage: 'Select Language...',
     general: 'General',
-    models: 'Models'
+    models: 'Models',
+    addProvider: 'Add Provider',
+    addCustomProvider: 'Add Custom Provider',
+    addProviderDesc: 'Add an OpenAI compatible model provider.',
   },
   contextMenu: {
-    deleteConversation: 'Delete Conversation'
+    deleteConversation: 'Delete Conversation',
   },
   common: {
     send: 'Send',
     chinese: 'Chinese',
     english: 'English',
     newChat: 'New Chat',
-    settings: 'Settings'
+    settings: 'Settings',
+    cancel: 'Cancel',
+    save: 'Save',
+    name: 'Name',
+    delete: 'Delete',
+    confirmDelete: 'Are you sure you want to delete this provider?',
+  },
+  toast: {
+    addSuccess: 'Provider added successfully',
+    deleteSuccess: 'Provider deleted successfully',
   },
   menu: {
     app: {
       newConversation: 'New Conversation',
       settings: 'Settings',
-      quit: 'Quit'
+      quit: 'Quit',
     },
     edit: {
       title: 'Edit',
@@ -34,9 +46,9 @@ export default {
       speech: {
         title: 'Speech',
         startSpeaking: 'Start Speaking',
-        stopSpeaking: 'Stop Speaking'
+        stopSpeaking: 'Stop Speaking',
       },
-      emoji: 'Emoji & Symbols'
+      emoji: 'Emoji & Symbols',
     },
     view: {
       title: 'View',
@@ -46,10 +58,21 @@ export default {
       resetZoom: 'Reset Zoom',
       zoomIn: 'Zoom In',
       zoomOut: 'Zoom Out',
-      togglefullscreen: 'Toggle Full Screen'
-    }
+      togglefullscreen: 'Toggle Full Screen',
+    },
   },
   provider: {
-    selectModel: 'Select a model...'
-  }
-} 
+    selectModel: 'Select a model...',
+    avatarUrl: 'Avatar URL (Optional)',
+    baseUrl: 'Base URL',
+    apiKey: 'API Key',
+    models: 'Model List (Comma separated)',
+    placeholder: {
+      name: 'e.g. My Local LLM',
+      avatar: 'https://...',
+      baseUrl: 'e.g. http://localhost:11434/v1',
+      apiKey: 'sk-...',
+      models: 'llama3, mistral, gpt-4',
+    },
+  },
+}
