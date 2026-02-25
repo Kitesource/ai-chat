@@ -1,0 +1,56 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-and-upload:
+    runs-on: windows-latest
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: 安装依赖
+        run: pnpm install
+
+      - name: 打包构建
+        run: pnpm make
+        env:
+          # 如需 .env 中的变量，在仓库 Secrets 中配置并在此注入
+          VITE_QIANFAN_ACCESS_KEY: ${{ secrets.VITE_QIANFAN_ACCESS_KEY }}
+          VITE_QIANFAN_SECRET_KEY: ${{ secrets.VITE_QIANFAN_SECRET_KEY }}
+          VITE_DASHSCOPE_APIKEY: ${{ secrets.VITE_DASHSCOPE_APIKEY }}
+          VITE_DASHSCOPE_BASEURL: ${{ secrets.VITE_DASHSCOPE_BASEURL }}
+          VITE_DEEPSEEK_APIKEY: ${{ secrets.VITE_DEEPSEEK_APIKEY }}
+          VITE_DEEPSEEK_BASEURL: ${{ secrets.VITE_DEEPSEEK_BASEURL }}
+
+      - name: 上传安装包（AIChat-Setup.exe）
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: out/make/squirrel.windows/x64/AIChat-Setup.exe
+          asset_name: AIChat-Setup.exe
+          tag: ${{ github.ref }}
+          overwrite: true
+
+      - name: 上传 ZIP 压缩包
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: out/make/zip/win32/x64/*.zip
+          file_glob: true
+          asset_name: AIChat-win32-x64.zip
+          tag: ${{ github.ref }}
+          overwrite: true
