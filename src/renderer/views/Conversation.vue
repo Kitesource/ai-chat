@@ -134,7 +134,6 @@ onMounted(async () => {
     }
   }
   window.electronAPI.onUpdateMessage(async streamData => {
-    console.log('stream', streamData)
     const { messageId, data } = streamData
     streamContent += data.result
     const getMessageStatus = (data: any): MessageStatus => {

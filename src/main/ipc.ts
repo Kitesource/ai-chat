@@ -22,7 +22,6 @@ export function setupIPC(mainWindow: BrowserWindow) {
       const provider = createProvider(providerName)
       const stream = await provider.chat(messages, selectedModel)
       for await (const chunk of stream) {
-        console.log('the chunk', chunk)
         const content = {
           messageId,
           data: chunk,

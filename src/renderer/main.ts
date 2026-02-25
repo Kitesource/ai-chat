@@ -48,7 +48,7 @@ const router = createRouter({
 })
 router.beforeEach(to => {
   const store = useConversationStore()
-  console.log('path', to.path)
+  console.log('path>>>', to.path)
   if (!to.path.startsWith('/conversation/')) {
     store.selectedId = -1
   }

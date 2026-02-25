@@ -36,7 +36,6 @@ export const configManager = {
   async load() {
     try {
       const data = await fs.readFile(configPath, 'utf-8')
-      console.log('data', data)
       config = { ...DEFAULT_CONFIG, ...JSON.parse(data) }
     } catch {
       await this.save()

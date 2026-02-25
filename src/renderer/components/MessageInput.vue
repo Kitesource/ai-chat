@@ -61,7 +61,6 @@ const handleImageUpload = (event: Event) => {
     selectedImage = target.files[0]
     const reader = new FileReader()
     reader.onload = e => {
-      console.log(e.target?.result)
       imagePreview.value = e.target?.result as string
     }
     reader.readAsDataURL(selectedImage)
