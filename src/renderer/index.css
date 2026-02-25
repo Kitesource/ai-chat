@@ -2,3 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 暗色模式全局样式 */
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body,
+html.dark #app {
+  @apply bg-gray-900 text-gray-100;
+}
+
+/* 暗色下侧边栏 */
+html.dark .bg-gray-200 {
+  @apply !bg-gray-800;
+}
+
+html.dark .border-gray-300 {
+  @apply !border-gray-700;
+}
+
+/* 暗色下各卡片/面板背景 */
+html.dark .bg-white {
+  @apply !bg-gray-800;
+}
+
+/* 暗色下输入框 */
+html.dark input,
+html.dark textarea {
+  @apply !bg-gray-700 !text-gray-100 !border-gray-600;
+}
+
+/* 暗色下文字 */
+html.dark .text-gray-700,
+html.dark .text-gray-600 {
+  @apply !text-gray-300;
+}
+
+html.dark .text-gray-400 {
+  @apply !text-gray-500;
+}
+
+/* 暗色下 hover 背景 */
+html.dark .hover\:bg-gray-100:hover {
+  @apply !bg-gray-700;
+}

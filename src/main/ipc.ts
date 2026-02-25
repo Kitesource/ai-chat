@@ -54,6 +54,10 @@ export function setupIPC(mainWindow: BrowserWindow) {
     if (newConfig.language) {
       updateMenu(mainWindow)
     }
+    // 如果开机自启配置变化，同步到系统
+    if (typeof newConfig.launchAtLogin === 'boolean') {
+      app.setLoginItemSettings({ openAtLogin: newConfig.launchAtLogin })
+    }
     return updatedConfig
   })
 

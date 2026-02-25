@@ -7,6 +7,10 @@ const configPath = path.join(app.getPath('userData'), 'config.json')
 export const DEFAULT_CONFIG: AppConfig = {
   language: 'zh-CN',
   fontSize: 14,
+  theme: 'system',
+  sendKey: 'Enter',
+  launchAtLogin: false,
+  showTimestamp: true,
   providerConfigs: {
     [ProviderType.Qianfan]: {
       accessKey: process.env.VITE_QIANFAN_ACCESS_KEY || '',

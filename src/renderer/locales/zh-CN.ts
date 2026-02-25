@@ -9,6 +9,17 @@ export default {
     addProvider: '添加模型服务',
     addCustomProvider: '添加自定义模型服务',
     addProviderDesc: '添加兼容 OpenAI 接口的模型服务商。',
+    theme: '主题',
+    themeSystem: '跟随系统',
+    themeLight: '亮色',
+    themeDark: '暗色',
+    sendKey: '发送快捷键',
+    sendKeyEnter: 'Enter 发送',
+    sendKeyCtrlEnter: 'Ctrl+Enter 发送',
+    launchAtLogin: '开机自启动',
+    launchAtLoginDesc: '登录时自动启动应用',
+    showTimestamp: '显示时间戳',
+    showTimestampDesc: '在消息气泡上显示时间',
   },
   contextMenu: {
     deleteConversation: '删除对话',
@@ -28,6 +39,7 @@ export default {
   toast: {
     addSuccess: '添加成功',
     deleteSuccess: '删除成功',
+    saveSuccess: '设置已保存',
   },
   menu: {
     app: {

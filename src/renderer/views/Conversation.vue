@@ -1,6 +1,6 @@
 <template>
   <div class="h-14 bg-gray-200 border-b border-gray-300 flex items-center px-3 justify-between" v-if="conversation">
-    <h3 class="font-semibold text-gray-900">{{ conversation.title }}</h3>
+    <h3 class="font-semibold text-gray-900 dark:text-white">{{ conversation.title }}</h3>
     <span class="text-sm text-gray-500">{{ formatDate(conversation.updatedAt) }}</span>
   </div>
   <div class="w-[100%] mx-auto h-[75%] overflow-y-auto p-4">

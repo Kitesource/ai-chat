@@ -15,7 +15,12 @@
           <span>{{ item.selectedModel }}</span>
           <span>{{ formatDate(item.updatedAt, 'YYYY/MM/DD') }}</span>
         </div>
-        <h2 class="font-semibold leading-6 text-gray-900 truncate">{{ item.title }}</h2>
+        <h2
+          class="font-semibold leading-6 text-gray-900 truncate"
+          :class="store.selectedId === item.id ? 'text-gray-900' : 'dark:text-white'"
+        >
+          {{ item.title }}
+        </h2>
       </a>
     </div>
   </div>

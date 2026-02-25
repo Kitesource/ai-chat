@@ -32,6 +32,7 @@ import { initI18n } from '@renderer/i18n'
 import { initProviders } from '@main/db'
 import { useConversationStore } from '@renderer/stores/conversation'
 import { useProviderStore } from '@renderer/stores/provider'
+import { useAppConfig } from '@renderer/composables/useAppConfig'
 import ConversationList from '@renderer/components/ConversationList.vue'
 import Button from '@renderer/components/Button.vue'
 import ToastProvider from '@renderer/components/ToastProvider.vue'
@@ -41,6 +42,9 @@ const { t } = useI18n()
 const conversationStore = useConversationStore()
 const providerStore = useProviderStore()
 const items = computed(() => conversationStore.items)
+
+// 初始化全局应用配置（主题切换等）
+useAppConfig()
 
 // 监听菜单事件
 window.electronAPI.onMenuNewConversation(() => {

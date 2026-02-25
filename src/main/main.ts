@@ -1,4 +1,4 @@
-import { app, BrowserWindow, protocol, net } from 'electron'
+import { app, BrowserWindow, protocol, net, session } from 'electron'
 import path from 'path'
 import url from 'url'
 import 'dotenv/config'
@@ -24,6 +24,8 @@ const createWindow = async () => {
       preload: path.join(__dirname, 'preload.js'),
     },
   })
+
+  // 核心：禁用代理，让 Electron 直接访问网络
 
   // Create application menu
   createMenu(mainWindow)

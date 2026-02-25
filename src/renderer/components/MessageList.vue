@@ -14,7 +14,11 @@
         <!-- Content Wrapper -->
         <div class="max-w-[60%]">
           <!-- Date -->
-          <div class="text-xs text-gray-400 mb-1" :class="{ 'text-right': message.type === 'question' }">
+          <div
+            v-if="config.showTimestamp"
+            class="text-xs text-gray-400 mb-1"
+            :class="{ 'text-right': message.type === 'question' }"
+          >
             {{ formatDate(message.createdAt) }}
           </div>
 
@@ -59,7 +63,7 @@
               <!-- Normal Markdown Content -->
               <div
                 v-else
-                class="prose prose-slate prose-sm max-w-none prose-headings:my-2 prose-p:my-1.5 prose-pre:bg-gray-800 prose-pre:text-gray-100"
+                class="prose prose-slate prose-sm max-w-none prose-headings:my-2 prose-p:my-1.5 dark:prose-invert"
               >
                 <vue-markdown :source="message.content" :plugins="plugins" />
               </div>
@@ -78,6 +82,7 @@ import VueMarkdown from 'vue-markdown-render'
 import markdownItHighlightjs from 'markdown-it-highlightjs'
 import { MessageProps } from '@/types'
 import { formatDate } from '@renderer/utils/format'
+import { useAppConfig } from '@renderer/composables/useAppConfig'
 
 defineProps<{
   messages: MessageProps[]
@@ -86,6 +91,7 @@ defineProps<{
 }>()
 
 const plugins = [markdownItHighlightjs]
+const { config } = useAppConfig()
 const _ref = ref<HTMLDivElement>()
 defineExpose({
   ref: _ref,

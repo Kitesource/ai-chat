@@ -24,7 +24,7 @@
           <label class="text-sm font-medium text-gray-700 w-24">
             {{ t('settings.language') }}
           </label>
-          <SelectRoot v-model="currentConfig.language" class="w-[160px]">
+          <SelectRoot v-model="config.language" class="w-[160px]">
             <SelectTrigger
               class="inline-flex items-center justify-between rounded-md px-3 py-2 text-sm gap-1 bg-white border border-gray-300"
             >
@@ -67,7 +67,7 @@
           <label class="text-sm font-medium text-gray-700 w-24">
             {{ t('settings.fontSize') }}
           </label>
-          <NumberFieldRoot v-model="currentConfig.fontSize" class="inline-flex w-[100px]">
+          <NumberFieldRoot v-model="config.fontSize" class="inline-flex w-[100px]">
             <NumberFieldDecrement
               class="px-2 border border-r-0 border-gray-300 rounded-l-md hover:bg-gray-100 focus:outline-none"
             >
@@ -84,6 +84,137 @@
               <Icon icon="radix-icons:plus" />
             </NumberFieldIncrement>
           </NumberFieldRoot>
+        </div>
+
+        <!-- Theme Setting -->
+        <div class="setting-item flex items-center gap-8">
+          <label class="text-sm font-medium text-gray-700 w-24">
+            {{ t('settings.theme') }}
+          </label>
+          <SelectRoot v-model="config.theme" class="w-[160px]">
+            <SelectTrigger
+              class="inline-flex items-center justify-between rounded-md px-3 py-2 text-sm gap-1 bg-white border border-gray-300"
+            >
+              <SelectValue />
+              <SelectIcon>
+                <Icon icon="radix-icons:chevron-down" />
+              </SelectIcon>
+            </SelectTrigger>
+            <SelectPortal>
+              <SelectContent class="bg-white rounded-md shadow-lg border">
+                <SelectViewport class="p-2">
+                  <SelectGroup>
+                    <SelectItem
+                      value="system"
+                      class="relative flex items-center px-8 py-2 text-sm text-gray-700 rounded-md cursor-default hover:bg-gray-100"
+                    >
+                      <SelectItemText>{{ t('settings.themeSystem') }}</SelectItemText>
+                      <SelectItemIndicator class="absolute left-2 inline-flex items-center">
+                        <Icon icon="radix-icons:check" />
+                      </SelectItemIndicator>
+                    </SelectItem>
+                    <SelectItem
+                      value="light"
+                      class="relative flex items-center px-8 py-2 text-sm text-gray-700 rounded-md cursor-default hover:bg-gray-100"
+                    >
+                      <SelectItemText>{{ t('settings.themeLight') }}</SelectItemText>
+                      <SelectItemIndicator class="absolute left-2 inline-flex items-center">
+                        <Icon icon="radix-icons:check" />
+                      </SelectItemIndicator>
+                    </SelectItem>
+                    <SelectItem
+                      value="dark"
+                      class="relative flex items-center px-8 py-2 text-sm text-gray-700 rounded-md cursor-default hover:bg-gray-100"
+                    >
+                      <SelectItemText>{{ t('settings.themeDark') }}</SelectItemText>
+                      <SelectItemIndicator class="absolute left-2 inline-flex items-center">
+                        <Icon icon="radix-icons:check" />
+                      </SelectItemIndicator>
+                    </SelectItem>
+                  </SelectGroup>
+                </SelectViewport>
+              </SelectContent>
+            </SelectPortal>
+          </SelectRoot>
+        </div>
+
+        <!-- Send Key Setting -->
+        <div class="setting-item flex items-center gap-8">
+          <label class="text-sm font-medium text-gray-700 w-24">
+            {{ t('settings.sendKey') }}
+          </label>
+          <SelectRoot v-model="config.sendKey" class="w-[160px]">
+            <SelectTrigger
+              class="inline-flex items-center justify-between rounded-md px-3 py-2 text-sm gap-1 bg-white border border-gray-300"
+            >
+              <SelectValue />
+              <SelectIcon>
+                <Icon icon="radix-icons:chevron-down" />
+              </SelectIcon>
+            </SelectTrigger>
+            <SelectPortal>
+              <SelectContent class="bg-white rounded-md shadow-lg border">
+                <SelectViewport class="p-2">
+                  <SelectGroup>
+                    <SelectItem
+                      value="Enter"
+                      class="relative flex items-center px-8 py-2 text-sm text-gray-700 rounded-md cursor-default hover:bg-gray-100"
+                    >
+                      <SelectItemText>{{ t('settings.sendKeyEnter') }}</SelectItemText>
+                      <SelectItemIndicator class="absolute left-2 inline-flex items-center">
+                        <Icon icon="radix-icons:check" />
+                      </SelectItemIndicator>
+                    </SelectItem>
+                    <SelectItem
+                      value="Ctrl+Enter"
+                      class="relative flex items-center px-8 py-2 text-sm text-gray-700 rounded-md cursor-default hover:bg-gray-100"
+                    >
+                      <SelectItemText>{{ t('settings.sendKeyCtrlEnter') }}</SelectItemText>
+                      <SelectItemIndicator class="absolute left-2 inline-flex items-center">
+                        <Icon icon="radix-icons:check" />
+                      </SelectItemIndicator>
+                    </SelectItem>
+                  </SelectGroup>
+                </SelectViewport>
+              </SelectContent>
+            </SelectPortal>
+          </SelectRoot>
+        </div>
+
+        <!-- Launch at Login Setting -->
+        <div class="setting-item flex items-center gap-8">
+          <div class="w-24">
+            <p class="text-sm font-medium text-gray-700">{{ t('settings.launchAtLogin') }}</p>
+            <p class="text-xs text-gray-400 mt-0.5">{{ t('settings.launchAtLoginDesc') }}</p>
+          </div>
+          <SwitchRoot
+            v-model:checked="config.launchAtLogin"
+            class="relative w-10 h-6 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-1"
+            :class="config.launchAtLogin ? 'bg-green-500' : 'bg-gray-300'"
+          >
+            <SwitchThumb
+              class="block w-4 h-4 bg-white rounded-full shadow-sm transition-transform duration-100 translate-x-1"
+              :class="config.launchAtLogin ? 'translate-x-5' : 'translate-x-1'"
+            />
+          </SwitchRoot>
+        </div>
+
+        <!-- Show Timestamp Setting -->
+        <div class="setting-item flex items-center gap-8">
+          <div class="w-24">
+            <p class="text-sm font-medium text-gray-700">{{ t('settings.showTimestamp') }}</p>
+            <p class="text-xs text-gray-400 mt-0.5">{{ t('settings.showTimestampDesc') }}</p>
+          </div>
+          <SwitchRoot
+            v-model:checked="config.showTimestamp"
+            class="relative w-10 h-6 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-1"
+            :class="config.showTimestamp ? 'bg-green-500' : 'bg-gray-300'"
+          >
+            <SwitchThumb
+              class="block w-4 h-4 bg-white rounded-full shadow-sm transition-transform duration-100"
+              :class="config.showTimestamp ? 'translate-x-5' : 'translate-x-1'"
+            />
+          </SwitchRoot>
         </div>
       </TabsContent>
 
@@ -228,12 +359,13 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted, watch, ref, computed } from 'vue'
+import { onMounted, watch, ref, computed, reactive } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
-import { AppConfig, ProviderType } from '@/types'
+import { ProviderType } from '@/types'
 import { setI18nLanguage } from '@renderer/i18n'
 import { useProviderStore } from '@renderer/stores/provider'
+import { useAppConfig } from '@renderer/composables/useAppConfig'
 import { providerConfigs, ProviderConfigItem, apiKeyBaseUrlConfig } from '@renderer/config/providerConfig'
 import {
   SelectContent,
@@ -258,7 +390,7 @@ import {
   AccordionRoot,
   AccordionItem,
   AccordionTrigger,
-  AccordionContent, // Removed duplicate AccordionContent
+  AccordionContent,
   DialogRoot,
   DialogTrigger,
   DialogPortal,
@@ -267,6 +399,8 @@ import {
   DialogTitle,
   DialogDescription,
   DialogClose,
+  SwitchRoot,
+  SwitchThumb,
 } from 'radix-vue'
 import { useToast } from '@renderer/composables/useToast'
 import { formatDate } from '@renderer/utils/format'
@@ -294,11 +428,9 @@ const showToastMessage = (title: string, description: string = '', type: 'succes
 const handleDeleteProvider = async (id: number, name: string) => {
   if (confirm(t('common.confirmDelete'))) {
     await providerStore.deleteProvider(id)
-    // Remove from config
-    const newConfig = { ...currentConfig }
-    if (newConfig.providerConfigs[name]) {
-      delete newConfig.providerConfigs[name]
-      Object.assign(currentConfig, newConfig)
+    // 从 config 中移除该 provider 的配置
+    if (config.value.providerConfigs[name]) {
+      delete config.value.providerConfigs[name]
     }
     showToastMessage(t('toast.deleteSuccess'))
   }
@@ -326,11 +458,11 @@ const saveProvider = async () => {
     // 2. 保存配置到Config (使用Provider的Title作为Key的一部分，或者生成唯一ID，这里简化直接用Title，实际最好用ID或UUID)
     const configKey = `custom_${providerId}`
 
-    // 更新 currentConfig
-    if (!currentConfig.providerConfigs[configKey]) {
-      currentConfig.providerConfigs[configKey] = {}
+    // 更新 config
+    if (!config.value.providerConfigs[configKey]) {
+      config.value.providerConfigs[configKey] = {}
     }
-    currentConfig.providerConfigs[configKey] = {
+    config.value.providerConfigs[configKey] = {
       apiKey: newProvider.apiKey,
       baseUrl: newProvider.baseUrl,
       type: 'custom', // 标记类型
@@ -362,25 +494,20 @@ const activeTab = ref('general')
 const providerStore = useProviderStore()
 const providers = computed(() => providerStore.items)
 
-const currentConfig = reactive<AppConfig>({
-  language: 'zh-CN',
-  fontSize: 14,
-  providerConfigs: {},
-})
+// 使用全局共享配置（useAppConfig 内部已处理持久化读取和主题应用）
+const { config } = useAppConfig()
 
-onMounted(async () => {
-  const config = await window.electronAPI.getConfig()
-  Object.assign(currentConfig, config)
-})
-
-// 监听配置变化并自动保存
+// 监听配置变化并自动保存到主进程
 watch(
-  currentConfig,
+  config,
   async newConfig => {
-    // 创建一个普通对象来传递配置
     const configToSave = {
       language: newConfig.language,
       fontSize: newConfig.fontSize,
+      theme: newConfig.theme,
+      sendKey: newConfig.sendKey,
+      launchAtLogin: newConfig.launchAtLogin,
+      showTimestamp: newConfig.showTimestamp,
       providerConfigs: JSON.parse(JSON.stringify(newConfig.providerConfigs)),
     }
     await window.electronAPI.updateConfig(configToSave)
@@ -394,20 +521,20 @@ watch(
 const getProviderConfig = (providerName: string): ProviderConfigItem[] => {
   const configs = providerConfigs[providerName] || apiKeyBaseUrlConfig
   // 确保配置值被初始化
-  if (!currentConfig.providerConfigs[providerName]) {
-    currentConfig.providerConfigs[providerName] = {}
+  if (!config.value.providerConfigs[providerName]) {
+    config.value.providerConfigs[providerName] = {}
   }
-  return configs.map(config => ({
-    ...config,
-    value: currentConfig.providerConfigs[providerName]?.[config.key] || config.value,
+  return configs.map(c => ({
+    ...c,
+    value: config.value.providerConfigs[providerName]?.[c.key] || c.value,
   }))
 }
 
 // 更新provider配置值
 const updateProviderConfig = (providerName: string, key: string, value: string) => {
-  if (!currentConfig.providerConfigs[providerName]) {
-    currentConfig.providerConfigs[providerName] = {}
+  if (!config.value.providerConfigs[providerName]) {
+    config.value.providerConfigs[providerName] = {}
   }
-  currentConfig.providerConfigs[providerName][key] = value
+  config.value.providerConfigs[providerName][key] = value
 }
 </script>

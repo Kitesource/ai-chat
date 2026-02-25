@@ -9,6 +9,17 @@ export default {
     addProvider: 'Add Provider',
     addCustomProvider: 'Add Custom Provider',
     addProviderDesc: 'Add an OpenAI compatible model provider.',
+    theme: 'Theme',
+    themeSystem: 'System',
+    themeLight: 'Light',
+    themeDark: 'Dark',
+    sendKey: 'Send Key',
+    sendKeyEnter: 'Enter to Send',
+    sendKeyCtrlEnter: 'Ctrl+Enter to Send',
+    launchAtLogin: 'Launch at Login',
+    launchAtLoginDesc: 'Automatically start app on login',
+    showTimestamp: 'Show Timestamps',
+    showTimestampDesc: 'Display time on message bubbles',
   },
   contextMenu: {
     deleteConversation: 'Delete Conversation',
@@ -28,6 +39,7 @@ export default {
   toast: {
     addSuccess: 'Provider added successfully',
     deleteSuccess: 'Provider deleted successfully',
+    saveSuccess: 'Settings saved',
   },
   menu: {
     app: {

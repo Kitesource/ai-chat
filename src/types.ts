@@ -77,5 +77,13 @@ export interface BaiduChunkProps {
 export interface AppConfig {
   language: 'zh-CN' | 'en'
   fontSize: number
+  /** 主题：跟随系统 / 亮色 / 暗色 */
+  theme: 'system' | 'light' | 'dark'
+  /** 发送快捷键：Enter 或 Ctrl+Enter */
+  sendKey: 'Enter' | 'Ctrl+Enter'
+  /** 是否开机自启动 */
+  launchAtLogin: boolean
+  /** 是否显示消息时间戳 */
+  showTimestamp: boolean
   providerConfigs: Partial<Record<string, Record<string, string>>>
 }
