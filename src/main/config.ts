@@ -12,6 +12,10 @@ export const DEFAULT_CONFIG: AppConfig = {
   launchAtLogin: false,
   showTimestamp: true,
   providerConfigs: {
+    [ProviderType.OpenAI]: {
+      apiKey: process.env.VITE_GPT_APIKEY || '',
+      baseUrl: process.env.VITE_GPT_BASEURL || '',
+    },
     [ProviderType.Qianfan]: {
       accessKey: process.env.VITE_QIANFAN_ACCESS_KEY || '',
       secretKey: process.env.VITE_QIANFAN_SECRET_KEY || '',
@@ -24,10 +28,6 @@ export const DEFAULT_CONFIG: AppConfig = {
       apiKey: process.env.VITE_DEEPSEEK_APIKEY || '',
       baseUrl: process.env.VITE_DEEPSEEK_BASEURL || '',
     },
-    [ProviderType.OpenAI]: {
-      apiKey: process.env.VITE_GPT_APIKEY || '',
-      baseUrl: process.env.VITE_GPT_BASEURL || '',
-    },
   },
 }
 let config = { ...DEFAULT_CONFIG }
@@ -35,8 +35,8 @@ let config = { ...DEFAULT_CONFIG }
 export const configManager = {
   async load() {
     try {
-      const data = await fs.readFile(configPath, 'utf-8')
-      config = { ...DEFAULT_CONFIG, ...JSON.parse(data) }
+      // const data = await fs.readFile(configPath, 'utf-8')
+      config = { ...DEFAULT_CONFIG }
     } catch {
       await this.save()
     }
