@@ -8,6 +8,7 @@ import { VitePlugin } from '@electron-forge/plugin-vite'
 import { FusesPlugin } from '@electron-forge/plugin-fuses'
 import { FuseV1Options, FuseVersion } from '@electron/fuses'
 import dotenv from 'dotenv'
+import path from 'path'
 
 // Load environment variables from .env file
 dotenv.config()
@@ -15,7 +16,8 @@ dotenv.config()
 const config: ForgeConfig = {
   packagerConfig: {
     name: 'AIChat',
-    icon: './assets/icon',
+    // icon 暂时禁用：icon.ico 文件不是标准多分辨率格式，待换用合规图标后恢复
+    // icon: './assets/icon',
     asar: true,
   },
   rebuildConfig: {},
@@ -25,11 +27,10 @@ const config: ForgeConfig = {
       name: 'AIChat',
       authors: 'Smiley',
       description: 'A chat application',
-      // 安装程序配置
-      setupIcon: './assets/icon.ico', // Windows 安装图标
-      iconUrl: 'https://raw.githubusercontent.com/Kitesource/resources/refs/heads/main/chat.ico', // 远程图标URL
+      // setupIcon 暂时禁用：icon.ico 文件不是标准多分辨率格式（需含 16/32/48/256px）
+      // setupIcon: path.resolve(__dirname, 'assets/icon.ico'),
       // 快捷方式设置
-      setupExe: 'AIChat-Setup.exe', // 安装程序名称
+      setupExe: 'AIChat-Setup.exe',
     }),
     // new MakerRpm({}),
     // new MakerDeb({}),
@@ -46,8 +47,8 @@ const config: ForgeConfig = {
       name: '@electron-forge/publisher-github',
       config: {
         repository: {
-          owner: 'Smiley Chen',
-          name: 'aiChat',
+          owner: 'Smiley',
+          name: 'AIChat',
         },
         prerelease: false,
         draft: true,

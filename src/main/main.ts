@@ -6,8 +6,11 @@ import { configManager } from './config'
 import { createMenu, updateMenu } from './menu'
 import { setupIPC } from './ipc'
 
-// Handle creating/removing shortcuts on Windows when installing/uninstalling.
-if (require('electron-squirrel-startup')) {
+// @ts-ignore — electron-squirrel-startup 无类型声明文件
+import squirrelStartup from 'electron-squirrel-startup'
+
+// 处理 Windows Squirrel 安装/卸载时的快捷方式事件
+if (squirrelStartup) {
   app.quit()
 }
 
