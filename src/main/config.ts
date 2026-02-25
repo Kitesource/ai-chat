@@ -24,6 +24,10 @@ export const DEFAULT_CONFIG: AppConfig = {
       apiKey: process.env.VITE_DEEPSEEK_APIKEY || '',
       baseUrl: process.env.VITE_DEEPSEEK_BASEURL || '',
     },
+    [ProviderType.OpenAI]: {
+      apiKey: process.env.VITE_GPT_APIKEY || '',
+      baseUrl: process.env.VITE_GPT_BASEURL || '',
+    },
   },
 }
 let config = { ...DEFAULT_CONFIG }
@@ -32,6 +36,7 @@ export const configManager = {
   async load() {
     try {
       const data = await fs.readFile(configPath, 'utf-8')
+      console.log('data', data)
       config = { ...DEFAULT_CONFIG, ...JSON.parse(data) }
     } catch {
       await this.save()
