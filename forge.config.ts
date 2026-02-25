@@ -23,11 +23,11 @@ const config: ForgeConfig = {
     new MakerSquirrel({
       // 应用信息
       name: 'AIChat',
-      authors: 'Viking Zhang',
+      authors: 'Smiley',
       description: 'A chat application',
       // 安装程序配置
       setupIcon: './assets/icon.ico', // Windows 安装图标
-      iconUrl: 'https://raw.githubusercontent.com/your-repo/ai-chat/main/assets/icon.ico', // 远程图标URL
+      iconUrl: 'https://raw.githubusercontent.com/Kitesource/resources/refs/heads/main/chat.ico', // 远程图标URL
       // 快捷方式设置
       setupExe: 'AIChat-Setup.exe', // 安装程序名称
     }),
